@@ -29,21 +29,21 @@ app.use(express.json());
 
 app.post('/boneco', async (req, res) => {
   try {
-   
-   const boneco = await collection.find().toArray();
-
+    const result = await collection.insertOne(novoBoneco);
+  
     res.status(201).json({ message: 'Boneco criada com sucesso', matriculaId: result.insertedId });
   } catch (err) {
     res.status(500).json({ message: 'Erro ao criar Boneco', error: err });
   }
 });
 
-app.get('/matriculas', async (req, res) => {
+app.get('/boneco', async (req, res) => {
   try {
-    //complete o código
-    res.status(200).json(matriculas);
+    const boneco = await collection.find().toArray();
+
+    res.status(200).json(boneco);
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao buscar matrículas', error: err });
+    res.status(500).json({ message: 'Erro ao buscar boneco', error: err });
   }
 });
 
@@ -54,15 +54,15 @@ app.get('/matriculas/:id', async (req, res) => {
     const id = req.params.id;
     const newId =  new ObjectId(id);
 
-    //complete o código
+    const boneco = await collection.findOne({ _id: newId });
 
-    if (!matricula) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+    if (!boneco) {
+      res.status(404).json({ message: 'boneco não encontrada' });
     } else {
       res.status(200).json(matricula);
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao buscar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao buscar boneco', error: err });
   }
 });
 
@@ -72,15 +72,15 @@ app.put('/matriculas/:id', async (req, res) => {
     const newId =  new ObjectId(id);
     const atualizacao = req.body;
 
-    //complete o código
+    await collection.updateOne( { _id: newId }, { $set: atualizacao });
 
     if (result.matchedCount === 0) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+      res.status(404).json({ message: 'boneco não encontrado' });
     } else {
-      res.status(200).json({ message: 'Matrícula atualizada com sucesso' });
+      res.status(200).json({ message: 'boneco atualizado com sucesso' });
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao atualizar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao atualizar boneco', error: err });
   }
 });
 
@@ -89,7 +89,7 @@ app.delete('/matriculas/:id', async (req, res) => {
     const id = req.params.id;
     const newId =  new ObjectId(id);
 
-    //complete o código
+    const result = await collection.deleteOne({ _id: newId });
 
     if (result.deletedCount === 0) {
       res.status(404).json({ message: 'Matrícula não encontrada' });
