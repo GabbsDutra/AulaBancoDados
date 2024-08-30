@@ -14,8 +14,8 @@ async function connectDB() {
     await client.connect();
     console.log('Connected to MongoDB');
 
-    const db = client.db('nome_do_banco');
-    collection = db.collection('nome_da_coleção');
+    const db = client.db('bonecos');
+    collection = db.collection('boneco');
 
   } catch (err) {
     console.error('Failed to connect to MongoDB', err);
@@ -27,15 +27,14 @@ connectDB();
 app.use(express.json()); 
 
 
-app.post('/matriculas', async (req, res) => {
+app.post('/boneco', async (req, res) => {
   try {
-    const novaMatricula = req.body;
+   
+   const boneco = await collection.find().toArray();
 
-    //complete o código
-    
-    res.status(201).json({ message: 'Matrícula criada com sucesso', matriculaId: result.insertedId });
+    res.status(201).json({ message: 'Boneco criada com sucesso', matriculaId: result.insertedId });
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao criar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao criar Boneco', error: err });
   }
 });
 

@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 import '../globals.css';
 
-export default function ReadMatriculas() {
-  const [matriculas, setMatriculas] = useState([]);
+export default function ReadBoneco() {
+  const [boneco, setboneco] = useState([]);
 
 
   useEffect(() => {
-    const fetchMatriculas = async () => {
+    const fetchBoneco = async () => {
       try {
-        const response = await fetch('http://localhost:5000/matriculas');
+        const response = await fetch('http://localhost:5000/boneco');
         const data = await response.json();
-        setMatriculas(data);
+        setBoneco(data);
       } catch (error) {
         console.error('Erro ao buscar as matrículas:', error);
       }
     };
 
-    fetchMatriculas();
+    fetchBoneco();
   }, []);
 
   const handleDelete = async (id) => {
@@ -42,20 +42,20 @@ export default function ReadMatriculas() {
       <table  className="table-container" border="1">
         <thead>
           <tr>
-            <th>Código Matrícula</th>
-            <th>Nome do Aluno</th>
-            <th>Turma</th>
-            <th>Curso</th>
-            <th>Ações</th>
+            <th>Código do boneco</th>
+            <th>Nome do boneco</th>
+            <th>estilo</th>
+            <th>material</th>
+            <th>tamanho</th>
           </tr>
         </thead>
         <tbody>
-          {matriculas.map((matricula) => (
-            <tr key={matricula._id}>
-              <td>{matricula._id}</td>
-              <td>{matricula.aluno}</td>
-              <td>{matricula.turma}</td>
-              <td>{matricula.curso}</td>
+          {boneco.map((bonecos) => (
+            <tr key={bonecos._id}>
+              <td>{bonecos._id}</td>
+              <td>{bonecos.estilo}</td>
+              <td>{bonecos.material}</td>
+              <td>{bonecos.tamanho}</td>
               <td>
                 <button onClick={() => handleDelete(matricula._id)}>Excluir</button>
               </td>

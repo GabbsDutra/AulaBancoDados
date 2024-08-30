@@ -6,14 +6,14 @@ export default function Home() {
         <div className='container'>
             <h2>Sistema Acadêmico</h2>
             <div className="card-container">
-                <Link to="/matricula/cadastrar" className="card">
-                    <div>Registrar Matrícula</div>
+                <Link to="/boneco/cadastrar" className="card">
+                    <div>Registrar boneco</div>
                 </Link>
-                <Link to="/matriculas" className="card">
-                    <div>Lista de Matrícula</div>
+                <Link to="/boneco" className="card">
+                    <div>Lista de boneco</div>
                 </Link>
-                <Link to="/matriculas/alterar" className="card">
-                    <div>Editar Matrícula</div>
+                <Link to="/boneco/alterar" className="card">
+                    <div>Editar boneco</div>
                 </Link>
             </div>
         </div>
