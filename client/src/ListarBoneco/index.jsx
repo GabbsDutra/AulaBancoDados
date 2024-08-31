@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../globals.css';
 
 export default function ReadBoneco() {
-  const [boneco, setboneco] = useState([]);
+  const [boneco, setBoneco] = useState([]);
 
 
   useEffect(() => {
@@ -12,7 +12,7 @@ export default function ReadBoneco() {
         const data = await response.json();
         setBoneco(data);
       } catch (error) {
-        console.error('Erro ao buscar as matrículas:', error);
+        console.error('Erro ao buscar os boneco:', error);
       }
     };
 
@@ -27,23 +27,23 @@ export default function ReadBoneco() {
       if (response.ok) {
 
         setMatriculas(matriculas.filter((matricula) => matricula._id !== id));
-        alert('Matrícula excluída com sucesso!');
+        alert('bonecos excluídos com sucesso!');
       } else {
-        alert('Erro ao excluir matrícula.');
+        alert('Erro ao excluir bonecos.');
       }
     } catch (error) {
-      console.error('Erro ao excluir matrícula:', error);
+      console.error('Erro ao excluir bonecos:', error);
     }
   };
 
   return (
     <div className='container'>
-      <h2>Lista de Matrículas</h2>
+      <h2>Lista de Bonecos</h2>
       <table  className="table-container" border="1">
         <thead>
           <tr>
             <th>Código do boneco</th>
-            <th>Nome do boneco</th>
+            <th>preço</th>
             <th>estilo</th>
             <th>material</th>
             <th>tamanho</th>
@@ -57,7 +57,7 @@ export default function ReadBoneco() {
               <td>{bonecos.material}</td>
               <td>{bonecos.tamanho}</td>
               <td>
-                <button onClick={() => handleDelete(matricula._id)}>Excluir</button>
+                <button onClick={() => handleDelete(bonecos._id)}>Excluir</button>
               </td>
             </tr>
           ))}

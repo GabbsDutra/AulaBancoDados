@@ -2,18 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Home'
-import CreateMatricula from './CriarMatricula'
-import ReadMatriculas from './ListarBoneco'
-import UpdateMatricula from './AlterarMatricula'
+import CreateBoneco from './CriarBoneco'
+import ReadBoneco from './ListarBoneco'
+import UpdateBoneco from './AlterarBoneco'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
       <BrowserRouter>
             <Routes>
                   <Route path="/" element={ <Home/> }/>
-                  <Route path="/matricula/cadastrar" element={ <CreateMatricula/> }/>
-                  <Route path="/matriculas" element={ <ReadMatriculas/> }/>
-                  <Route path="/matriculas/alterar" element={ <UpdateMatricula/>}/>
+                  <Route path="/Boneco/cadastrar" element={ <CreateBoneco/> }/>
+                  <Route path="/Boneco" element={ <ReadBoneco/> }/>
+                  <Route path="/Boneco/alterar" element={ <UpdateBoneco/>}/>
             </Routes> 
       </BrowserRouter>
   </React.StrictMode>,

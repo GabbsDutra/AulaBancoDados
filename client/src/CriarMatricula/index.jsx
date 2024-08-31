@@ -3,7 +3,7 @@ import '../globals.css';
 import { useNavigate } from 'react-router-dom';
 
 
-export default function CreateMatricula() {
+export default function CreateBoneco() {
   const [aluno, setAluno] = useState('');
   const [turma, setTurma] = useState('');
   const [curso, setCurso] = useState('');
@@ -14,7 +14,7 @@ export default function CreateMatricula() {
     const novaMatricula = { aluno, turma, curso };
 
     try {
-      const response = await fetch('http://localhost:5000/matriculas', {
+      const response = await fetch('http://localhost:5000/bonecos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

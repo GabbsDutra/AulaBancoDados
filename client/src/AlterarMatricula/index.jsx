@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function UpdateMatricula() {
+export default function UpdateBoneco() {
   const [id, setId] = useState('');
   const [aluno, setAluno] = useState('');
   const [turma, setTurma] = useState('');
