@@ -149,7 +149,7 @@ body {
     justify-content: center;
     width: 200px;
     height: 200px;
-    background-color: #409706b7;
+    background-color: #f50101b7;
     color: white;
     border-radius: 8px;
     text-decoration: none;
@@ -160,5 +160,5 @@ body {
   }
   
   .card:hover {
-    background-color: #0056b3;
+    background-color: #fd00ba;
   }
