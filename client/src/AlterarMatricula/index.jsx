@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function UpdateBoneco() {
+export default function UpdateMatricula() {
+  const [id, setId] = useState('');
   const [nome, setNome] = useState('');
   const [tamanho, setTamanho] = useState('');
-  const [material, setMaterial] = useState('');
   const [preco, setPreco] = useState('');
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const atualizacao = { nome, tamanho, material, preco };
+    const atualizacao = { nome, tamanho, preco };
 
     try {
-      const response = await fetch(`http://localhost:5000/boneco/${nome}`, {
+      const response = await fetch(`http://localhost:5000/boneco/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -22,8 +22,8 @@ export default function UpdateBoneco() {
         body: JSON.stringify(atualizacao),
       });
       if (response.ok) {
-        alert('Boneco atualizada com sucesso!');
-        navigate("/boneco");
+        alert('Boneco atualizado com sucesso!');
+        navigate("/matriculas");
       } else {
         alert('Erro ao atualizar Boneco.');
       }
@@ -38,6 +38,13 @@ export default function UpdateBoneco() {
       <h2>Atualizar Boneco</h2>
       <input
         type="text"
+        placeholder="ID do Boneco"
+        value={id}
+        onChange={(e) => setId(e.target.value)}
+        required
+      />
+      <input
+        type="text"
         placeholder="Nome do Boneco"
         value={nome}
         onChange={(e) => setNome(e.target.value)}
@@ -45,26 +52,19 @@ export default function UpdateBoneco() {
       />
       <input
         type="text"
-        placeholder="Estilo"
+        placeholder="Tamanho"
         value={tamanho}
         onChange={(e) => setTamanho(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Material"
-        value={material}
-        onChange={(e) => setMaterial(e.target.value)}
-        required
-      />
-      <input
-        type=""
-        placeholder="Preço"
+        placeholder="preço"
         value={preco}
         onChange={(e) => setPreco(e.target.value)}
         required
       />
-      <button type="submit">Atualizar Boneco</button>
+      <button type="submit">Atualizar Boneco na lista</button>
     </form>
     </div>
   );

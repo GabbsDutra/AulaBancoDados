@@ -29,21 +29,24 @@ app.use(express.json());
 
 app.post('/boneco', async (req, res) => {
   try {
-    const result = await collection.insertOne(novoboneco);
-  
-    res.status(201).json({ message: 'boneco criada com sucesso', bonecoId: result.insertedId });
+    const novoBoneco = req.body;
+
+    const result = await collection.insertOne(novoBoneco);
+    
+    res.status(201).json({ message: 'Boneco criado com sucesso', matriculaId: result.insertedId });
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao criar boneco', error: err });
+    res.status(500).json({ message: 'Erro ao criar Boneco', error: err });
   }
 });
 
 app.get('/boneco', async (req, res) => {
   try {
+
     const boneco = await collection.find().toArray();
 
     res.status(200).json(boneco);
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao buscar boneco', error: err });
+    res.status(500).json({ message: 'Erro ao buscar Bonecos', error: err });
   }
 });
 
@@ -54,15 +57,16 @@ app.get('/boneco/:id', async (req, res) => {
     const id = req.params.id;
     const newId =  new ObjectId(id);
 
-    const boneco = await collection.findOne({ _id: newId });
+    const matricula = await collection.findOne({ _id: newId });
 
-    if (!boneco) {
-      res.status(404).json({ message: 'boneco não encontrada' });
+
+    if (!matricula) {
+      res.status(404).json({ message: 'Boneco não encontrado' });
     } else {
-      res.status(200).json(boneco);
+      res.status(200).json(matricula);
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao buscar boneco', error: err });
+    res.status(500).json({ message: 'Erro ao buscar Boneco', error: err });
   }
 });
 
@@ -72,15 +76,15 @@ app.put('/boneco/:id', async (req, res) => {
     const newId =  new ObjectId(id);
     const atualizacao = req.body;
 
-    await collection.updateOne( { _id: newId }, { $set: atualizacao });
+    const result = await collection.updateOne( { _id: newId }, { $set: atualizacao });
 
     if (result.matchedCount === 0) {
-      res.status(404).json({ message: 'boneco não encontrado' });
+      res.status(404).json({ message: 'Boneco não encontrado' });
     } else {
-      res.status(200).json({ message: 'boneco atualizado com sucesso' });
+      res.status(200).json({ message: 'Boneco atualizada com sucesso' });
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao atualizar boneco', error: err });
+    res.status(500).json({ message: 'Erro ao atualizar Boneco', error: err });
   }
 });
 
@@ -92,12 +96,12 @@ app.delete('/boneco/:id', async (req, res) => {
     const result = await collection.deleteOne({ _id: newId });
 
     if (result.deletedCount === 0) {
-      res.status(404).json({ message: 'boneco não encontrada' });
+      res.status(404).json({ message: 'Boneco não encontrado' });
     } else {
-      res.status(200).json({ message: 'boneco excluída com sucesso' });
+      res.status(200).json({ message: 'Boneco excluída com sucesso' });
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao excluir boneco', error: err });
+    res.status(500).json({ message: 'Erro ao excluir Boneco', error: err });
   }
 });
 

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import CreateMatricula from './CriarMatricula'
-import ReadMatricula from './ListarMatricula'
+import ReadMatriculas from './ListarMatricula'
 import UpdateMatricula from './AlterarMatricula'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -11,9 +11,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <BrowserRouter>
             <Routes>
                   <Route path="/" element={ <Home/> }/>
-                  <Route path="/boneco/cadastrar" element={ <CreateMatricula/> }/>
-                  <Route path="/boneco" element={ <ReadMatricula/> }/>
-                  <Route path="/boneco/alterar" element={ <UpdateMatricula/>}/>
+                  <Route path="/matricula/cadastrar" element={ <CreateMatricula/> }/>
+                  <Route path="/matriculas" element={ <ReadMatriculas/> }/>
+                  <Route path="/matriculas/alterar" element={ <UpdateMatricula/>}/>
             </Routes> 
       </BrowserRouter>
   </React.StrictMode>,

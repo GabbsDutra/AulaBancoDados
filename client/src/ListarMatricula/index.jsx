@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 import '../globals.css';
 
-export default function ReadMatricula() {
+export default function ReadMatriculas() {
   const [boneco, setBoneco] = useState([]);
 
 
   useEffect(() => {
-    const fetchBoneco = async () => {
+    const fetchMatriculas = async () => {
       try {
         const response = await fetch('http://localhost:5000/boneco');
         const data = await response.json();
         setBoneco(data);
       } catch (error) {
-        console.error('Erro ao buscar os boneco:', error);
+        console.error('Erro ao buscar as bonecos:', error);
       }
     };
 
-    fetchBoneco();
+    fetchMatriculas();
   }, []);
 
   const handleDelete = async (id) => {
@@ -27,7 +27,7 @@ export default function ReadMatricula() {
       if (response.ok) {
 
         setBoneco(boneco.filter((boneco) => boneco._id !== id));
-        alert('boneco excluídos com sucesso!');
+        alert('boneco excluído com sucesso!');
       } else {
         alert('Erro ao excluir boneco.');
       }
@@ -38,16 +38,15 @@ export default function ReadMatricula() {
 
   return (
     <div className='container'>
-      <h2>Lista de Bonecos</h2>
+      <h2>Lista de bonecos</h2>
       <table  className="table-container" border="1">
         <thead>
           <tr>
-            <th>Código do boneco</th>
-            <th>Nome</th>
-            <th>estilo</th>
+            <th>Código boneco</th>
+            <th>Nome do boneco</th>
+            <th>Tamanho</th>
             <th>Preço</th>
-            <th>tamanho</th>
-            <th>ação final</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -55,9 +54,8 @@ export default function ReadMatricula() {
             <tr key={boneco._id}>
               <td>{boneco._id}</td>
               <td>{boneco.nome}</td>
-              <td>{boneco.material}</td>
-              <td>{boneco.acao}</td>
               <td>{boneco.tamanho}</td>
+              <td>{boneco.preco}</td>
               <td>
                 <button onClick={() => handleDelete(boneco._id)}>Excluir</button>
               </td>

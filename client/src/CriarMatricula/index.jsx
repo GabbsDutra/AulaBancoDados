@@ -6,21 +6,13 @@ import { useNavigate } from 'react-router-dom';
 export default function CreateMatricula() {
   const [nome, setNome] = useState('');
   const [tamanho, setTamanho] = useState('');
-  const [material, setMaterial] = useState('');
   const [preco, setPreco] = useState('');
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Converter o valor de preco para número
-    const novoBoneco = { 
-      nome, 
-      tamanho, 
-      material, 
-      preco: parseFloat(preco) // Conversão de string para número
-    };
-  
+    const novoBoneco = { nome, tamanho, preco };
+
     try {
       const response = await fetch('http://localhost:5000/boneco', {
         method: 'POST',
@@ -30,25 +22,23 @@ export default function CreateMatricula() {
         body: JSON.stringify(novoBoneco),
       });
       if (response.ok) {
-        alert('Boneco criada com sucesso!');
+        alert('boneco criado com sucesso!');
         setNome('');
         setTamanho('');
-        setMaterial('');
         setPreco('');
-        navigate("/boneco");
+        navigate("/matriculas");
       } else {
-        alert('Erro ao criar Boneco.');
+        alert('Erro ao criar boneco.');
       }
     } catch (error) {
-      console.error('Erro ao criar Boneco:', error);
+      console.error('Erro ao criar boneco:', error);
     }
   };
-  
 
   return (
     <div className='container'>
     <form  className="form-container" onSubmit={handleSubmit}>
-      <h2>Criar Boneco</h2>
+      <h2>Criar boneco</h2>
       <input
         type="text"
         placeholder="Nome do Boneco"
@@ -65,25 +55,13 @@ export default function CreateMatricula() {
       />
       <input
         type="text"
-        placeholder="Material"
-        value={material}
-        onChange={(e) => setMaterial(e.target.value)}
-        required
-      />
-
-       <input
-        type="text"
-        placeholder="preco"
+        placeholder="Preço"
         value={preco}
         onChange={(e) => setPreco(e.target.value)}
         required
       />
-
-
-      <button type="submit">Criar Boneco</button>
-    
+      <button type="submit">Adicionar boneco</button>
     </form>
     </div>
-    
   );
 }

@@ -4,18 +4,20 @@ import '../globals.css';
 export default function Home() {
     return (
         <div className='container'>
-            <h2>Sistema Acadêmico</h2>
+            <h2>Arrumar boneco</h2>
             <div className="card-container">
-                <Link to="/boneco/cadastrar" className="card">
-                    <div>Registrar boneco</div>
+                <Link to="/matricula/cadastrar" className="card">
+                    <div>Adicionar Boneco</div>
                 </Link>
-                <Link to="/boneco" className="card">
-                    <div>Lista de boneco</div>
+                <Link to="/matriculas" className="card">
+                    <div>Lista de Boneco</div>
                 </Link>
-                <Link to="/boneco/alterar" className="card">
-                    <div>Editar boneco</div>
+                <Link to="/matriculas/alterar" className="card">
+                    <div>Editar Boneco</div>
                 </Link>
+              
             </div>
         </div>
+
     );
 }
