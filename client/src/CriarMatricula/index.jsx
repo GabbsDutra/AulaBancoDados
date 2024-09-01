@@ -22,23 +22,23 @@ export default function CreateMatricula() {
         body: JSON.stringify(novoBoneco),
       });
       if (response.ok) {
-        alert('Matrícula criada com sucesso!');
+        alert('boneco criado com sucesso!');
         setNome('');
         setTamanho('');
         setPreco('');
         navigate("/matriculas");
       } else {
-        alert('Erro ao criar matrícula.');
+        alert('Erro ao criar boneco.');
       }
     } catch (error) {
-      console.error('Erro ao criar matrícula:', error);
+      console.error('Erro ao criar boneco:', error);
     }
   };
 
   return (
     <div className='container'>
     <form  className="form-container" onSubmit={handleSubmit}>
-      <h2>Criar Matrícula</h2>
+      <h2>Criar boneco</h2>
       <input
         type="text"
         placeholder="Nome do Boneco"

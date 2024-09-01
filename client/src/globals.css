@@ -2,23 +2,33 @@
 
 
 body{
-    font-family: "Inter", sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-optical-sizing: auto;
-    font-weight: weight;
+    font-weight:400px;
     font-style: normal;
     margin: 0;
     padding: 0;
+    color: #fff;
+    
 }
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 50;
+    padding: 50;
     box-sizing: border-box;
+    font-size:25px;
+    color: #fff;
+    
+
   }
   
   h2 {
     text-align: center;
-    margin-bottom: 20px;
+    background-color: rgb(63, 63, 63);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 50;
+    padding: 50;
+    box-sizing: border-box;
   }
   
   .container {
@@ -28,16 +38,16 @@ body {
     justify-content: center;
     padding: 20px;
     min-height: 100vh;
-    background-color: #f7f7f7;
+    background-color: #101010;
   }
   
   .form-container {
     width: 100%;
     max-width: 400px;
-    background-color: #fff;
+    background-color: #6c6c6c;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(210, 210, 210, 0.1);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -46,13 +56,13 @@ body {
   .form-container input {
     padding: 10px;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: 1px solid #4b2e1c;
     font-size: 16px;
   }
   
   .form-container button {
     padding: 10px;
-    background-color: #007bff;
+    background-color: #424242b7;
     color: white;
     border: none;
     border-radius: 4px;
@@ -62,16 +72,17 @@ body {
   }
   
   .form-container button:hover {
-    background-color: #0056b3;
+    background-color: #bc5b00;
   }
   
   .table-container {
     width: 100%;
     max-width: 800px;
-    background-color: #fff;
+    background-color: #444444;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 8x;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color:#fff
   }
   
   .table-container table {
@@ -86,7 +97,8 @@ body {
   }
   
   .table-container th {
-    background-color: #f2f2f2;
+    background-color: #476264;
+    
   }
   
   .table-container td button {
@@ -110,7 +122,7 @@ body {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(244, 242, 242, 0.1);
     width: 100%;
     max-width: 400px;
   }
@@ -149,9 +161,9 @@ body {
     justify-content: center;
     width: 200px;
     height: 200px;
-    background-color: #f50101b7;
+    background-color: #747474b7;
     color: white;
-    border-radius: 8px;
+    border-radius: 15px;
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
@@ -160,5 +172,9 @@ body {
   }
   
   .card:hover {
-    background-color: #fd00ba;
+    background-color: #ec5b00;
   }
+
+  
+  
+

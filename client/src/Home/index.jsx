@@ -15,7 +15,9 @@ export default function Home() {
                 <Link to="/matriculas/alterar" className="card">
                     <div>Editar Boneco</div>
                 </Link>
+              
             </div>
         </div>
+
     );
 }

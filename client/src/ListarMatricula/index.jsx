@@ -12,7 +12,7 @@ export default function ReadMatriculas() {
         const data = await response.json();
         setBoneco(data);
       } catch (error) {
-        console.error('Erro ao buscar as matrículas:', error);
+        console.error('Erro ao buscar as bonecos:', error);
       }
     };
 
@@ -27,22 +27,22 @@ export default function ReadMatriculas() {
       if (response.ok) {
 
         setBoneco(boneco.filter((boneco) => boneco._id !== id));
-        alert('Matrícula excluída com sucesso!');
+        alert('boneco excluído com sucesso!');
       } else {
-        alert('Erro ao excluir matrícula.');
+        alert('Erro ao excluir boneco.');
       }
     } catch (error) {
-      console.error('Erro ao excluir matrícula:', error);
+      console.error('Erro ao excluir boneco:', error);
     }
   };
 
   return (
     <div className='container'>
-      <h2>Lista de Matrículas</h2>
+      <h2>Lista de bonecos</h2>
       <table  className="table-container" border="1">
         <thead>
           <tr>
-            <th>Código Matrícula</th>
+            <th>Código boneco</th>
             <th>Nome do boneco</th>
             <th>Tamanho</th>
             <th>Preço</th>
