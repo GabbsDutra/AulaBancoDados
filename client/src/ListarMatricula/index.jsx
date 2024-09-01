@@ -44,8 +44,8 @@ export default function ReadMatriculas() {
           <tr>
             <th>Código Matrícula</th>
             <th>Nome do boneco</th>
-            <th>Turma</th>
-            <th>Curso</th>
+            <th>Tamanho</th>
+            <th>Preço</th>
             <th>Ações</th>
           </tr>
         </thead>

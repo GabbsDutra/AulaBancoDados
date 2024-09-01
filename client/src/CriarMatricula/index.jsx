@@ -41,26 +41,26 @@ export default function CreateMatricula() {
       <h2>Criar Matrícula</h2>
       <input
         type="text"
-        placeholder="Nome do Aluno"
+        placeholder="Nome do Boneco"
         value={nome}
         onChange={(e) => setNome(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Turma"
+        placeholder="Tamanho"
         value={tamanho}
         onChange={(e) => setTamanho(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Curso"
+        placeholder="Preço"
         value={preco}
         onChange={(e) => setPreco(e.target.value)}
         required
       />
-      <button type="submit">Criar Matrícula</button>
+      <button type="submit">Adicionar boneco</button>
     </form>
     </div>
   );

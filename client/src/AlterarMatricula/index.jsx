@@ -35,36 +35,36 @@ export default function UpdateMatricula() {
   return (
     <div className='container'>
     <form  className="form-container" onSubmit={handleSubmit}>
-      <h2>Atualizar Matrícula</h2>
+      <h2>Atualizar Boneco</h2>
       <input
         type="text"
-        placeholder="ID da Matrícula"
+        placeholder="ID do Boneco"
         value={id}
         onChange={(e) => setId(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Nome do Aluno"
+        placeholder="Nome do Boneco"
         value={nome}
         onChange={(e) => setNome(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Turma"
+        placeholder="Tamanho"
         value={tamanho}
         onChange={(e) => setTamanho(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Curso"
+        placeholder="preço"
         value={preco}
         onChange={(e) => setPreco(e.target.value)}
         required
       />
-      <button type="submit">Atualizar Matrícula</button>
+      <button type="submit">Atualizar Boneco na lista</button>
     </form>
     </div>
   );
