@@ -33,7 +33,7 @@ app.post('/boneco', async (req, res) => {
 
     const result = await collection.insertOne(novoBoneco);
     
-    res.status(201).json({ message: 'Boneco criada com sucesso', matriculaId: result.insertedId });
+    res.status(201).json({ message: 'Boneco criado com sucesso', matriculaId: result.insertedId });
   } catch (err) {
     res.status(500).json({ message: 'Erro ao criar Boneco', error: err });
   }
