@@ -14,7 +14,7 @@ async function connectDB() {
     await client.connect();
     console.log('Connected to MongoDB');
 
-    const db = client.db('bonecos');
+    const db = client.db('bonecodb');
     collection = db.collection('boneco');
 
   } catch (err) {
@@ -29,11 +29,11 @@ app.use(express.json());
 
 app.post('/boneco', async (req, res) => {
   try {
-    const result = await collection.insertOne(novoBoneco);
+    const result = await collection.insertOne(novoboneco);
   
-    res.status(201).json({ message: 'Boneco criada com sucesso', matriculaId: result.insertedId });
+    res.status(201).json({ message: 'boneco criada com sucesso', bonecoId: result.insertedId });
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao criar Boneco', error: err });
+    res.status(500).json({ message: 'Erro ao criar boneco', error: err });
   }
 });
 
@@ -49,7 +49,7 @@ app.get('/boneco', async (req, res) => {
 
 const { ObjectId } = require('mongodb');
 
-app.get('/matriculas/:id', async (req, res) => {
+app.get('/boneco/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
@@ -59,14 +59,14 @@ app.get('/matriculas/:id', async (req, res) => {
     if (!boneco) {
       res.status(404).json({ message: 'boneco não encontrada' });
     } else {
-      res.status(200).json(matricula);
+      res.status(200).json(boneco);
     }
   } catch (err) {
     res.status(500).json({ message: 'Erro ao buscar boneco', error: err });
   }
 });
 
-app.put('/matriculas/:id', async (req, res) => {
+app.put('/boneco/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
@@ -84,7 +84,7 @@ app.put('/matriculas/:id', async (req, res) => {
   }
 });
 
-app.delete('/matriculas/:id', async (req, res) => {
+app.delete('/boneco/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
@@ -92,12 +92,12 @@ app.delete('/matriculas/:id', async (req, res) => {
     const result = await collection.deleteOne({ _id: newId });
 
     if (result.deletedCount === 0) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+      res.status(404).json({ message: 'boneco não encontrada' });
     } else {
-      res.status(200).json({ message: 'Matrícula excluída com sucesso' });
+      res.status(200).json({ message: 'boneco excluída com sucesso' });
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao excluir matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao excluir boneco', error: err });
   }
 });
 

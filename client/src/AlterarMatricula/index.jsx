@@ -2,19 +2,19 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function UpdateBoneco() {
-  const [id, setId] = useState('');
-  const [aluno, setAluno] = useState('');
-  const [turma, setTurma] = useState('');
-  const [curso, setCurso] = useState('');
+  const [nome, setNome] = useState('');
+  const [tamanho, setTamanho] = useState('');
+  const [material, setMaterial] = useState('');
+  const [preco, setPreco] = useState('');
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const atualizacao = { aluno, turma, curso };
+    const atualizacao = { nome, tamanho, material, preco };
 
     try {
-      const response = await fetch(`http://localhost:5000/matriculas/${id}`, {
+      const response = await fetch(`http://localhost:5000/boneco/${nome}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -22,49 +22,49 @@ export default function UpdateBoneco() {
         body: JSON.stringify(atualizacao),
       });
       if (response.ok) {
-        alert('Matrícula atualizada com sucesso!');
-        navigate("/matriculas");
+        alert('Boneco atualizada com sucesso!');
+        navigate("/boneco");
       } else {
-        alert('Erro ao atualizar matrícula.');
+        alert('Erro ao atualizar Boneco.');
       }
     } catch (error) {
-      console.error('Erro ao atualizar matrícula:', error);
+      console.error('Erro ao atualizar Boneco:', error);
     }
   };
 
   return (
     <div className='container'>
     <form  className="form-container" onSubmit={handleSubmit}>
-      <h2>Atualizar Matrícula</h2>
+      <h2>Atualizar Boneco</h2>
       <input
         type="text"
-        placeholder="ID da Matrícula"
-        value={id}
-        onChange={(e) => setId(e.target.value)}
+        placeholder="Nome do Boneco"
+        value={nome}
+        onChange={(e) => setNome(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Nome do Aluno"
-        value={aluno}
-        onChange={(e) => setAluno(e.target.value)}
+        placeholder="Estilo"
+        value={tamanho}
+        onChange={(e) => setTamanho(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Turma"
-        value={turma}
-        onChange={(e) => setTurma(e.target.value)}
+        placeholder="Material"
+        value={material}
+        onChange={(e) => setMaterial(e.target.value)}
         required
       />
       <input
-        type="text"
-        placeholder="Curso"
-        value={curso}
-        onChange={(e) => setCurso(e.target.value)}
+        type=""
+        placeholder="Preço"
+        value={preco}
+        onChange={(e) => setPreco(e.target.value)}
         required
       />
-      <button type="submit">Atualizar Matrícula</button>
+      <button type="submit">Atualizar Boneco</button>
     </form>
     </div>
   );
