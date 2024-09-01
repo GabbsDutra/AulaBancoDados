@@ -14,8 +14,8 @@ async function connectDB() {
     await client.connect();
     console.log('Connected to MongoDB');
 
-    const db = client.db('nome_do_banco');
-    collection = db.collection('nome_da_coleção');
+    const db = client.db('bonecodb');
+    collection = db.collection('boneco');
 
   } catch (err) {
     console.error('Failed to connect to MongoDB', err);
@@ -27,11 +27,11 @@ connectDB();
 app.use(express.json()); 
 
 
-app.post('/matriculas', async (req, res) => {
+app.post('/boneco', async (req, res) => {
   try {
-    const novaMatricula = req.body;
+    const novoBoneco = req.body;
 
-    //complete o código
+    const result = await collection.insertOne(novoBoneco);
     
     res.status(201).json({ message: 'Matrícula criada com sucesso', matriculaId: result.insertedId });
   } catch (err) {
@@ -39,10 +39,12 @@ app.post('/matriculas', async (req, res) => {
   }
 });
 
-app.get('/matriculas', async (req, res) => {
+app.get('/boneco', async (req, res) => {
   try {
-    //complete o código
-    res.status(200).json(matriculas);
+
+    const boneco = await collection.find().toArray();
+
+    res.status(200).json(boneco);
   } catch (err) {
     res.status(500).json({ message: 'Erro ao buscar matrículas', error: err });
   }
@@ -50,12 +52,13 @@ app.get('/matriculas', async (req, res) => {
 
 const { ObjectId } = require('mongodb');
 
-app.get('/matriculas/:id', async (req, res) => {
+app.get('/boneco/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
 
-    //complete o código
+    const matricula = await collection.findOne({ _id: newId });
+
 
     if (!matricula) {
       res.status(404).json({ message: 'Matrícula não encontrada' });
@@ -67,13 +70,13 @@ app.get('/matriculas/:id', async (req, res) => {
   }
 });
 
-app.put('/matriculas/:id', async (req, res) => {
+app.put('/boneco/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
     const atualizacao = req.body;
 
-    //complete o código
+    const result = await collection.updateOne( { _id: newId }, { $set: atualizacao });
 
     if (result.matchedCount === 0) {
       res.status(404).json({ message: 'Matrícula não encontrada' });
@@ -85,12 +88,12 @@ app.put('/matriculas/:id', async (req, res) => {
   }
 });
 
-app.delete('/matriculas/:id', async (req, res) => {
+app.delete('/boneco/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const newId =  new ObjectId(id);
 
-    //complete o código
+    const result = await collection.deleteOne({ _id: newId });
 
     if (result.deletedCount === 0) {
       res.status(404).json({ message: 'Matrícula não encontrada' });

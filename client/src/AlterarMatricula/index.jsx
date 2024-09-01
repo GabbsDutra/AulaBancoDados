@@ -3,18 +3,18 @@ import { useNavigate } from 'react-router-dom';
 
 export default function UpdateMatricula() {
   const [id, setId] = useState('');
-  const [aluno, setAluno] = useState('');
-  const [turma, setTurma] = useState('');
-  const [curso, setCurso] = useState('');
+  const [nome, setNome] = useState('');
+  const [tamanho, setTamanho] = useState('');
+  const [preco, setPreco] = useState('');
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const atualizacao = { aluno, turma, curso };
+    const atualizacao = { nome, tamanho, preco };
 
     try {
-      const response = await fetch(`http://localhost:5000/matriculas/${id}`, {
+      const response = await fetch(`http://localhost:5000/boneco/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -46,22 +46,22 @@ export default function UpdateMatricula() {
       <input
         type="text"
         placeholder="Nome do Aluno"
-        value={aluno}
-        onChange={(e) => setAluno(e.target.value)}
+        value={nome}
+        onChange={(e) => setNome(e.target.value)}
         required
       />
       <input
         type="text"
         placeholder="Turma"
-        value={turma}
-        onChange={(e) => setTurma(e.target.value)}
+        value={tamanho}
+        onChange={(e) => setTamanho(e.target.value)}
         required
       />
       <input
         type="text"
         placeholder="Curso"
-        value={curso}
-        onChange={(e) => setCurso(e.target.value)}
+        value={preco}
+        onChange={(e) => setPreco(e.target.value)}
         required
       />
       <button type="submit">Atualizar Matrícula</button>

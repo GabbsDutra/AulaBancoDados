@@ -4,28 +4,28 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function CreateMatricula() {
-  const [aluno, setAluno] = useState('');
-  const [turma, setTurma] = useState('');
-  const [curso, setCurso] = useState('');
+  const [nome, setNome] = useState('');
+  const [tamanho, setTamanho] = useState('');
+  const [preco, setPreco] = useState('');
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const novaMatricula = { aluno, turma, curso };
+    const novoBoneco = { nome, tamanho, preco };
 
     try {
-      const response = await fetch('http://localhost:5000/matriculas', {
+      const response = await fetch('http://localhost:5000/boneco', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(novaMatricula),
+        body: JSON.stringify(novoBoneco),
       });
       if (response.ok) {
         alert('Matrícula criada com sucesso!');
-        setAluno('');
-        setTurma('');
-        setCurso('');
+        setNome('');
+        setTamanho('');
+        setPreco('');
         navigate("/matriculas");
       } else {
         alert('Erro ao criar matrícula.');
@@ -42,22 +42,22 @@ export default function CreateMatricula() {
       <input
         type="text"
         placeholder="Nome do Aluno"
-        value={aluno}
-        onChange={(e) => setAluno(e.target.value)}
+        value={nome}
+        onChange={(e) => setNome(e.target.value)}
         required
       />
       <input
         type="text"
         placeholder="Turma"
-        value={turma}
-        onChange={(e) => setTurma(e.target.value)}
+        value={tamanho}
+        onChange={(e) => setTamanho(e.target.value)}
         required
       />
       <input
         type="text"
         placeholder="Curso"
-        value={curso}
-        onChange={(e) => setCurso(e.target.value)}
+        value={preco}
+        onChange={(e) => setPreco(e.target.value)}
         required
       />
       <button type="submit">Criar Matrícula</button>

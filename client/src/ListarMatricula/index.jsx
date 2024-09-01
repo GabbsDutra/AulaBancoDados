@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 import '../globals.css';
 
 export default function ReadMatriculas() {
-  const [matriculas, setMatriculas] = useState([]);
+  const [boneco, setBoneco] = useState([]);
 
 
   useEffect(() => {
     const fetchMatriculas = async () => {
       try {
-        const response = await fetch('http://localhost:5000/matriculas');
+        const response = await fetch('http://localhost:5000/boneco');
         const data = await response.json();
-        setMatriculas(data);
+        setBoneco(data);
       } catch (error) {
         console.error('Erro ao buscar as matrículas:', error);
       }
@@ -21,12 +21,12 @@ export default function ReadMatriculas() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/matriculas/${id}`, {
+      const response = await fetch(`http://localhost:5000/boneco/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {
 
-        setMatriculas(matriculas.filter((matricula) => matricula._id !== id));
+        setBoneco(boneco.filter((boneco) => boneco._id !== id));
         alert('Matrícula excluída com sucesso!');
       } else {
         alert('Erro ao excluir matrícula.');
@@ -43,21 +43,21 @@ export default function ReadMatriculas() {
         <thead>
           <tr>
             <th>Código Matrícula</th>
-            <th>Nome do Aluno</th>
+            <th>Nome do boneco</th>
             <th>Turma</th>
             <th>Curso</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          {matriculas.map((matricula) => (
-            <tr key={matricula._id}>
-              <td>{matricula._id}</td>
-              <td>{matricula.aluno}</td>
-              <td>{matricula.turma}</td>
-              <td>{matricula.curso}</td>
+          {boneco.map((boneco) => (
+            <tr key={boneco._id}>
+              <td>{boneco._id}</td>
+              <td>{boneco.nome}</td>
+              <td>{boneco.tamanho}</td>
+              <td>{boneco.preco}</td>
               <td>
-                <button onClick={() => handleDelete(matricula._id)}>Excluir</button>
+                <button onClick={() => handleDelete(boneco._id)}>Excluir</button>
               </td>
             </tr>
           ))}
